@@ -13,7 +13,6 @@ public class RewardController {
     public RewardController(RewardService rewardService) {
         this.rewardService = rewardService;
     }
-
     @GetMapping("/rewards")
     public int getRewards(
             @RequestParam String customerId,
