@@ -1,35 +1,66 @@
 package com.example.rewards.model;
 
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 
-    @Entity
-    public class Transaction {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
-        private String customerId;
-        private double amount;
-        private String transactionDate;
+import java.time.LocalDate;
 
-        // Default constructor
-        public Transaction() {}
+@Entity
+public class Transaction {
 
-        public Transaction(Long id, String customerId, double amount, String transactionDate) {
-            this.id = id;
-            this.customerId = customerId;
-            this.amount = amount;
-            this.transactionDate = transactionDate;
-        }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-        // Getters and setters
-        public Long getId() { return id; }
-        public void setId(Long id) { this.id = id; }
-        public String getCustomerId() { return customerId; }
-        public void setCustomerId(String customerId) { this.customerId = customerId; }
-        public double getAmount() { return amount; }
-        public void setAmount(double amount) { this.amount = amount; }
-        public String getTransactionDate() { return transactionDate; }
-        public void setTransactionDate(String transactionDate) { this.transactionDate = transactionDate; }
+    private double amount;
+
+    @Column(name = "transaction_date")
+    private LocalDate transactionDate;
+
+    @ManyToOne
+    private Customer customer;
+
+    // Constructors, getters, setters
+    public Transaction() {}
+
+    public Transaction(double amount, LocalDate transactionDate, Customer customer) {
+        this.amount = amount;
+        this.transactionDate = transactionDate;
+        this.customer = customer;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public LocalDate getTransactionDate() {
+        return transactionDate;
+    }
+
+    public void setTransactionDate(LocalDate transactionDate) {
+        this.transactionDate = transactionDate;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+
+}
