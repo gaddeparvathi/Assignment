@@ -65,7 +65,7 @@ Reward points are calculated based on the following criteria:
 
 For a transaction of $120:
 
-Points for the first $100: 0 points
+Points for the in between  $50 and $100: 1 * 50 = 50 points
 
 Points for the remaining $20: 2 * 20 = 40 points
 
